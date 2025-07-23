@@ -56,19 +56,19 @@
       <tbody>
         <tr>
           <th scope="row">First Name</th>
-          <td>${firstName}</td>
+          <td>${nameDTO.firstName}</td>
         </tr>
         <tr>
           <th scope="row">Last Name</th>
-          <td>${lastName}</td>
+          <td>${nameDTO.lastName}</td>
         </tr>
         <tr>
           <th scope="row">Middle Name</th>
-          <td>${middleName}</td>
+          <td>${nameDTO.middleName}</td>
         </tr>
         <tr>
           <th scope="row">Display Name</th>
-          <td>${displayName}</td>
+          <td>${nameDTO.displayName}</td>
         </tr>
       </tbody>
     </table>

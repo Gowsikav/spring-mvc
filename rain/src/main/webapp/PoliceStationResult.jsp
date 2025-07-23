@@ -26,7 +26,7 @@
               <a class="nav-link" href="Name.jsp">Name Form</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="HospitalForm.jsp">Hospital Form</a>
+              <a class="nav-link" href="Hospital.jsp">Hospital Form</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="RTO.jsp">RTO Form</a>
@@ -56,43 +56,43 @@
           <tbody>
             <tr>
               <th scope="row">Police Station Name</th>
-              <td>${stationName}</td>
+              <td>${policeStationDTO.stationName}</td>
             </tr>
             <tr>
               <th scope="row">Address</th>
-              <td>${address}</td>
+              <td>${policeStationDTO.address}</td>
             </tr>
             <tr>
               <th scope="row">City</th>
-              <td>${city}</td>
+              <td>${policeStationDTO.city}</td>
             </tr>
             <tr>
               <th scope="row">District</th>
-              <td>${district}</td>
+              <td>${policeStationDTO.district}</td>
             </tr>
             <tr>
               <th scope="row">State</th>
-              <td>${state}</td>
+              <td>${policeStationDTO.state}</td>
             </tr>
             <tr>
               <th scope="row">Pincode</th>
-              <td>${pincode}</td>
+              <td>${policeStationDTO.pincode}</td>
             </tr>
             <tr>
               <th scope="row">Contact Number</th>
-              <td>${contactNumber}</td>
+              <td>${policeStationDTO.contactNumber}</td>
             </tr>
             <tr>
               <th scope="row">Email</th>
-              <td>${email}</td>
+              <td>${policeStationDTO.email}</td>
             </tr>
             <tr>
               <th scope="row">Station Type</th>
-              <td>${stationType}</td>
+              <td>${policeStationDTO.stationType}</td>
             </tr>
             <tr>
               <th scope="row">Station In-Charge Name</th>
-              <td>${inChargeName}</td>
+              <td>${policeStationDTO.inChargeName}</td>
             </tr>
           </tbody>
         </table>

@@ -58,27 +58,27 @@
                     <tbody>
                         <tr>
                             <th scope="row">Hospital Name</th>
-                            <td>${hospitalName}</td>
+                            <td>${hospitalDTO.hospitalName}</td>
                         </tr>
                         <tr>
                             <th scope="row">Address</th>
-                            <td>${address}</td>
+                            <td>${hospitalDTO.address}</td>
                         </tr>
                         <tr>
                             <th scope="row">City</th>
-                            <td>${city}</td>
+                            <td>${hospitalDTO.city}</td>
                         </tr>
                         <tr>
                             <th scope="row">Contact Number</th>
-                            <td>${contactNumber}</td>
+                            <td>${hospitalDTO.contactNumber}</td>
                         </tr>
                         <tr>
                             <th scope="row">Email</th>
-                            <td>${email}</td>
+                            <td>${hospitalDTO.email}</td>
                         </tr>
                         <tr>
                             <th scope="row">Type</th>
-                            <td>${type}</td>
+                            <td>${hospitalDTO.type}</td>
                         </tr>
                     </tbody>
                 </table>

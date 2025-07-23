@@ -26,7 +26,7 @@
               <a class="nav-link" href="Name.jsp">Name Form</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="HospitalForm.jsp">Hospital Form</a>
+              <a class="nav-link" href="Hospital.jsp">Hospital Form</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="RTO.jsp">RTO Form</a>
@@ -56,43 +56,43 @@
           <tbody>
             <tr>
               <th scope="row">Fruit Name</th>
-              <td>${fruitName}</td>
+              <td>${fruitDTO.fruitName}</td>
             </tr>
             <tr>
               <th scope="row">Color</th>
-              <td>${color}</td>
+              <td>${fruitDTO.color}</td>
             </tr>
             <tr>
               <th scope="row">Taste</th>
-              <td>${taste}</td>
+              <td>${fruitDTO.taste}</td>
             </tr>
             <tr>
               <th scope="row">Season</th>
-              <td>${season}</td>
+              <td>${fruitDTO.season}</td>
             </tr>
             <tr>
               <th scope="row">Country of Origin</th>
-              <td>${originCountry}</td>
+              <td>${fruitDTO.originCountry}</td>
             </tr>
             <tr>
               <th scope="row">Average Weight (grams)</th>
-              <td>${averageWeight}</td>
+              <td>${fruitDTO.averageWeight}</td>
             </tr>
             <tr>
               <th scope="row">Vitamins Present</th>
-              <td>${vitamins}</td>
+              <td>${fruitDTO.vitamins}</td>
             </tr>
             <tr>
               <th scope="row">Is Tropical?</th>
-              <td>${isTropical}</td>
+              <td>${fruitDTO.isTropical}</td>
             </tr>
             <tr>
               <th scope="row">Price per Kg</th>
-              <td>${pricePerKg}</td>
+              <td>${fruitDTO.pricePerKg}</td>
             </tr>
             <tr>
               <th scope="row">Exported?</th>
-              <td>${exported}</td>
+              <td>${fruitDTO.exported}</td>
             </tr>
           </tbody>
         </table>
