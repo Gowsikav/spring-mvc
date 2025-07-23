@@ -26,7 +26,7 @@
               <a class="nav-link" href="Name.jsp">Name Form</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="HospitalForm.jsp">Hospital Form</a>
+              <a class="nav-link" href="Hospital.jsp">Hospital Form</a>
             </li>
             <li class="nav-item">
               <a class="nav-link active" href="RTO.jsp">RTO Form</a>
@@ -56,27 +56,27 @@
           <tbody>
             <tr>
               <th scope="row">RTO Office Name</th>
-              <td>${officeName}</td>
+              <td>${rtodto.officeName}</td>
             </tr>
             <tr>
               <th scope="row">Address</th>
-              <td>${address}</td>
+              <td>${rtodto.address}</td>
             </tr>
             <tr>
               <th scope="row">City</th>
-              <td>${city}</td>
+              <td>${rtodto.city}</td>
             </tr>
             <tr>
               <th scope="row">Contact Number</th>
-              <td>${contactNumber}</td>
+              <td>${rtodto.contactNumber}</td>
             </tr>
             <tr>
               <th scope="row">Email</th>
-              <td>${email}</td>
+              <td>${rtodto.email}</td>
             </tr>
             <tr>
               <th scope="row">Region Code</th>
-              <td>${regionCode}</td>
+              <td>${rtodto.regionCode}</td>
             </tr>
           </tbody>
         </table>

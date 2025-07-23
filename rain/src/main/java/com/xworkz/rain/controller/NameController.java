@@ -1,9 +1,9 @@
 package com.xworkz.rain.controller;
 
+import com.xworkz.rain.dto.NameDTO;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/")
@@ -14,19 +14,12 @@ public class NameController {
     }
 
     @RequestMapping("/name")
-    public String onSubmit(@RequestParam String firstName, @RequestParam String middleName,
-                           @RequestParam String lastName, @RequestParam String displayName, Model model)
+    public String onSubmit(NameDTO nameDTO, Model model)
     {
         System.out.println("Name form method");
-        System.out.println("First Name: "+firstName);
-        System.out.println("Middle Name: "+middleName);
-        System.out.println("Last Name: "+lastName);
-        System.out.println("Display Name: "+displayName);
+        System.out.println("NameDto: "+nameDTO);
 
-        model.addAttribute("firstName",firstName);
-        model.addAttribute("lastName",lastName);
-        model.addAttribute("middleName",middleName);
-        model.addAttribute("displayName",displayName);
+        model.addAttribute("nameDTO",nameDTO);
 
         return "/NameResult.jsp";
     }
