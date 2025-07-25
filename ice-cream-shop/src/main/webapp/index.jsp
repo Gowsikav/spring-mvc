@@ -12,7 +12,7 @@
 <body>
     <nav class="navbar navbar-expand-lg" style="background-color: rgb(43, 239, 135);">
         <div class="container-fluid">
-            <img class="navbar-brand h-70" src="images/ice-cream-icon.png" alt="Logo" height="150px"/>
+            <img class="navbar-brand" src="images/ice-cream-icon.png" alt="Logo" height="100px"/>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -53,7 +53,7 @@
         </div>
     </div>
 
-    <footer class="text-center text-lg-start py-5 fixed-bottom" style="background-color: rgb(43, 239, 135);">
+    <footer class="text-center text-lg-start py-3 fixed-bottom" style="background-color: rgb(43, 239, 135);">
         <div class="text-center text-dark">
             &copy; 2025 Ice Cream Shop.
         </div>

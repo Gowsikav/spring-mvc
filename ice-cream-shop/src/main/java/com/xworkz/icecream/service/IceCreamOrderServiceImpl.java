@@ -4,7 +4,9 @@ import com.xworkz.icecream.dto.IceCreamOrderDTO;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class IceCreamOrderServiceImpl implements IceCreamOrderService {
@@ -40,16 +42,39 @@ public class IceCreamOrderServiceImpl implements IceCreamOrderService {
             System.out.println("Flavour is valid");
         }
 
-        int quantity = iceCreamOrderDTO.getQuantity();
-        if (quantity < 0 || quantity > 15) {
-            System.out.println("Quantity is invalid");
+        String quantityStr = iceCreamOrderDTO.getQuantity();
+        if (quantityStr==null) {
+            System.out.println("Quantity is null");
             return false;
         } else {
-            System.out.println("Quantity is valid");
+            int quantity=Integer.parseInt(quantityStr);
+            if(quantity<=0 || quantity>15) {
+                System.out.println("Quantity is Invalid");
+            }else {
+                System.out.println("Quantity is valid");
+            }
+        }
+
+        String takeAwayStr= iceCreamOrderDTO.getTakeAway();
+        if(takeAwayStr==null)
+        {
+            System.out.println("Take Away is null");
+            return false;
+        } else {
+                System.out.println("Take Away is valid");
+            }
+
+        String addOnStr= iceCreamOrderDTO.getAddOn();
+        if(addOnStr==null)
+        {
+            System.out.println("Add on is null");
+            return false;
+        } else {
+            System.out.println("Add on is valid");
         }
 
         String couponCode = iceCreamOrderDTO.getCouponCode();
-        if (couponCode != null) {
+        if (couponCode != null && !couponCode.trim().isEmpty()) {
             List<String> couponList = couponList();
             boolean find = couponList.stream().anyMatch(code -> code.equals(couponCode));
 
@@ -60,8 +85,7 @@ public class IceCreamOrderServiceImpl implements IceCreamOrderService {
                 return false;
             }
         } else {
-            System.out.println("Coupon code is Invalid");
-            return false;
+            System.out.println("Coupon code is empty");
         }
 
         System.out.println("All inputs are valid");
@@ -82,5 +106,46 @@ public class IceCreamOrderServiceImpl implements IceCreamOrderService {
         coupon.add("MELTS20");
 
         return coupon;
+    }
+
+    public double getPrice(String flavour,IceCreamOrderDTO iceCreamOrderDTO)
+    {
+        double totalPrice;
+        Map<String,Double> price=new HashMap<>();
+        price.put("Chocolate",50d);
+        price.put("Pista",60d);
+        price.put("Vanilla",80d);
+        price.put("ButterScotch",30d);
+        price.put("StrawBerry",90d);
+        price.put("Mango",75d);
+        int quantity=Integer.parseInt(iceCreamOrderDTO.getQuantity());
+        totalPrice=price.get(flavour)*quantity;
+        boolean takeAway=Boolean.parseBoolean(iceCreamOrderDTO.getTakeAway());
+        if(takeAway)
+        {
+            totalPrice+=20;
+            System.out.println("Added take Away amount 20");
+        }
+        boolean addOn=Boolean.parseBoolean(iceCreamOrderDTO.getAddOn());
+        if(addOn)
+        {
+            totalPrice=totalPrice+(15*quantity);
+            System.out.println("Added addon amount 15 for each quantity");
+        }
+        System.out.println("Total amount without discount: "+totalPrice);
+
+        String couponCode=iceCreamOrderDTO.getCouponCode();
+        if(couponCode == null || couponCode.trim().isEmpty())
+        {
+            System.out.println("No discount Coupon code is null");
+            return totalPrice;
+        }
+        System.out.println("Code: "+couponCode);
+        couponCode=couponCode.replaceAll("[A-Z]","");
+        int coupon=Integer.parseInt(couponCode);
+        System.out.println("discount: "+coupon);
+        totalPrice=totalPrice-(totalPrice*((double) coupon /100));
+        System.out.println("Total amount with discount: "+totalPrice);
+        return totalPrice;
     }
 }

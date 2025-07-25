@@ -7,8 +7,8 @@ public class IceCreamOrderDTO {
 
     private String name;
     private String flavour;
-    private int quantity;
-    private boolean takeAway;
-    private boolean adsOn;
+    private String quantity;
+    private String takeAway;
+    private String addOn;
     private String couponCode;
 }
