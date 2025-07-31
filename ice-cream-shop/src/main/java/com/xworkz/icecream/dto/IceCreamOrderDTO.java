@@ -2,13 +2,23 @@ package com.xworkz.icecream.dto;
 
 import lombok.Data;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Size;
+
 @Data
 public class IceCreamOrderDTO {
 
+    @Size(min = 3,max = 30)
     private String name;
+
+    @Size(min = 3,max = 30)
     private String flavour;
-    private String quantity;
-    private String takeAway;
-    private String addOn;
+
+    @Min(1)
+    @Max(15)
+    private int quantity;
+    private boolean takeAway;
+    private boolean addOn;
     private String couponCode;
 }

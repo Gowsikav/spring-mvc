@@ -42,35 +42,12 @@ public class IceCreamOrderServiceImpl implements IceCreamOrderService {
             System.out.println("Flavour is valid");
         }
 
-        String quantityStr = iceCreamOrderDTO.getQuantity();
-        if (quantityStr==null) {
-            System.out.println("Quantity is null");
-            return false;
-        } else {
-            int quantity=Integer.parseInt(quantityStr);
-            if(quantity<=0 || quantity>15) {
-                System.out.println("Quantity is Invalid");
-            }else {
-                System.out.println("Quantity is valid");
-            }
-        }
+        int quantity = iceCreamOrderDTO.getQuantity();
 
-        String takeAwayStr= iceCreamOrderDTO.getTakeAway();
-        if(takeAwayStr==null)
-        {
-            System.out.println("Take Away is null");
-            return false;
+        if (quantity <= 0 || quantity > 15) {
+            System.out.println("Quantity is Invalid");
         } else {
-                System.out.println("Take Away is valid");
-            }
-
-        String addOnStr= iceCreamOrderDTO.getAddOn();
-        if(addOnStr==null)
-        {
-            System.out.println("Add on is null");
-            return false;
-        } else {
-            System.out.println("Add on is valid");
+            System.out.println("Quantity is valid");
         }
 
         String couponCode = iceCreamOrderDTO.getCouponCode();
@@ -78,9 +55,9 @@ public class IceCreamOrderServiceImpl implements IceCreamOrderService {
             List<String> couponList = couponList();
             boolean find = couponList.stream().anyMatch(code -> code.equals(couponCode));
 
-            if(find){
-            System.out.println("Coupon code is valid");
-            }else {
+            if (find) {
+                System.out.println("Coupon code is valid");
+            } else {
                 System.out.println("Coupon code is not present in list");
                 return false;
             }
@@ -108,44 +85,40 @@ public class IceCreamOrderServiceImpl implements IceCreamOrderService {
         return coupon;
     }
 
-    public double getPrice(String flavour,IceCreamOrderDTO iceCreamOrderDTO)
-    {
+    public double getPrice(String flavour, IceCreamOrderDTO iceCreamOrderDTO) {
         double totalPrice;
-        Map<String,Double> price=new HashMap<>();
-        price.put("Chocolate",50d);
-        price.put("Pista",60d);
-        price.put("Vanilla",80d);
-        price.put("ButterScotch",30d);
-        price.put("StrawBerry",90d);
-        price.put("Mango",75d);
-        int quantity=Integer.parseInt(iceCreamOrderDTO.getQuantity());
-        totalPrice=price.get(flavour)*quantity;
-        boolean takeAway=Boolean.parseBoolean(iceCreamOrderDTO.getTakeAway());
-        if(takeAway)
-        {
-            totalPrice+=20;
+        Map<String, Double> price = new HashMap<>();
+        price.put("Chocolate", 50d);
+        price.put("Pista", 60d);
+        price.put("Vanilla", 80d);
+        price.put("ButterScotch", 30d);
+        price.put("StrawBerry", 90d);
+        price.put("Mango", 75d);
+        int quantity = iceCreamOrderDTO.getQuantity();
+        totalPrice = price.get(flavour) * quantity;
+        boolean takeAway = iceCreamOrderDTO.isTakeAway();
+        if (takeAway) {
+            totalPrice += 20;
             System.out.println("Added take Away amount 20");
         }
-        boolean addOn=Boolean.parseBoolean(iceCreamOrderDTO.getAddOn());
-        if(addOn)
-        {
-            totalPrice=totalPrice+(15*quantity);
+        boolean addOn = iceCreamOrderDTO.isAddOn();
+        if (addOn) {
+            totalPrice = totalPrice + (15 * quantity);
             System.out.println("Added addon amount 15 for each quantity");
         }
-        System.out.println("Total amount without discount: "+totalPrice);
+        System.out.println("Total amount without discount: " + totalPrice);
 
-        String couponCode=iceCreamOrderDTO.getCouponCode();
-        if(couponCode == null || couponCode.trim().isEmpty())
-        {
+        String couponCode = iceCreamOrderDTO.getCouponCode();
+        if (couponCode == null || couponCode.trim().isEmpty()) {
             System.out.println("No discount Coupon code is null");
             return totalPrice;
         }
-        System.out.println("Code: "+couponCode);
-        couponCode=couponCode.replaceAll("[A-Z]","");
-        int coupon=Integer.parseInt(couponCode);
-        System.out.println("discount: "+coupon);
-        totalPrice=totalPrice-(totalPrice*((double) coupon /100));
-        System.out.println("Total amount with discount: "+totalPrice);
+        System.out.println("Code: " + couponCode);
+        couponCode = couponCode.replaceAll("[A-Z]", "");
+        int coupon = Integer.parseInt(couponCode);
+        System.out.println("discount: " + coupon);
+        totalPrice = totalPrice - (totalPrice * ((double) coupon / 100));
+        System.out.println("Total amount with discount: " + totalPrice);
         return totalPrice;
     }
 }
