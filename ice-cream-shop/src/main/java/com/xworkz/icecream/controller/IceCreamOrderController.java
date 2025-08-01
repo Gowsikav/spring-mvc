@@ -9,6 +9,10 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.validation.Valid;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 @Controller
 @RequestMapping("/")
@@ -36,6 +40,14 @@ public class IceCreamOrderController {
             return "Order";
         }
 
+        try{
+            byte[] bytes=iceCreamOrderDTO.getMultipartFile().getBytes();
+            Path path= Paths.get("D:\\Java\\File upload\\"+iceCreamOrderDTO.getName()+System.currentTimeMillis());
+            Files.write(path,bytes);
+        }catch(IOException e)
+        {
+            System.out.println(e.getMessage());
+        }
         if (iceCreamOrderService.validate(iceCreamOrderDTO)) {
             model.addAttribute("name", iceCreamOrderDTO.getName());
             double price = iceCreamOrderService.getPrice(iceCreamOrderDTO.getFlavour(), iceCreamOrderDTO);
