@@ -38,10 +38,15 @@
             </div>
         </nav>
         <div class="container d-flex justify-content-center my-5">
-            <form action="order" id="form" class="p-4 border rounded shadow" style="width: 100%; max-width: 600px;">
+            <form action="order" id="form" method="post" enctype="multipart/form-data" class="p-4 border rounded shadow" style="width: 100%; max-width: 600px;">
                 <h4 class="text-center mb-4">Ice Cream Order</h4>
                 <h6 class="text-center text-danger mb-4">${message}</h6>
 
+                <div class="mb-3">
+                    <label for="profile" class="form-label">Profile</label>
+                    <input type="file" class="form-control" id="profile" name="multipartFile" required>
+
+                </div>
                 <div class="mb-3">
                     <label for="name" class="form-label">Name</label>
                     <input type="text" class="form-control" id="name" name="name" value="${dto.name}" required>

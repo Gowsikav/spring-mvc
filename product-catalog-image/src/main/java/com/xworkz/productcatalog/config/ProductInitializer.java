@@ -1,17 +1,21 @@
-package com.xworkz.icecream.config;
+package com.xworkz.productcatalog.config;
 
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 import javax.servlet.MultipartConfigElement;
 import javax.servlet.ServletRegistration;
 import java.io.File;
 
-public class IceCreamInitializer extends AbstractAnnotationConfigDispatcherServletInitializer implements WebMvcConfigurer {
+public class ProductInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
-    public IceCreamInitializer()
+    public ProductInitializer()
     {
-        System.out.println("IceCreamInitializer constructor");
+        System.out.println("Product initializer constructor");
+    }
+
+    @Override
+    protected String[] getServletMappings() {
+        return new String[]{"/"};
     }
 
     @Override
@@ -21,22 +25,14 @@ public class IceCreamInitializer extends AbstractAnnotationConfigDispatcherServl
 
     @Override
     protected Class<?>[] getServletConfigClasses() {
-        return new Class[]{IceCreamConfiguration.class};
-    }
-
-    @Override
-    protected String[] getServletMappings() {
-        return new String[]{"/"};
+        return new Class[]{ProductConfiguration.class};
     }
 
     @Override
     protected void customizeRegistration(ServletRegistration.Dynamic registration) {
 
-        // upload temp file will put here
         File uploadDirectory = new File(System.getProperty("java.io.tmpdir"));
-
-        // register a MultipartConfigElement
-        int maxUploadSizeInMb = 5 * 1024 * 1024;
+        int maxUploadSizeInMb=5*1024*1024;
         MultipartConfigElement multipartConfigElement =
                 new MultipartConfigElement(uploadDirectory.getAbsolutePath(),
                         maxUploadSizeInMb, maxUploadSizeInMb * 2, maxUploadSizeInMb / 2);

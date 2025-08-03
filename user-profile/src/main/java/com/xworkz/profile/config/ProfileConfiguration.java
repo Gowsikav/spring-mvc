@@ -1,4 +1,4 @@
-package com.xworkz.icecream.config;
+package com.xworkz.profile.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -11,30 +11,29 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @Configuration
+@ComponentScan("com.xworkz.profile")
 @EnableWebMvc
-@ComponentScan("com.xworkz.icecream")
-public class IceCreamConfiguration implements WebMvcConfigurer {
-    public IceCreamConfiguration()
+public class ProfileConfiguration implements WebMvcConfigurer {
+
+    public ProfileConfiguration()
     {
-        System.out.println("IceCreamConfiguration constructor");
+        System.out.println("ProfileConfiguration constructor");
     }
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         System.out.println("addResourceHandlers method");
         registry.addResourceHandler("/images/**").addResourceLocations("/images/");
-
         registry.addResourceHandler("/js/**").addResourceLocations("/js/");
     }
 
     @Bean
     public InternalResourceViewResolver internalResourceViewResolver()
     {
+        System.out.println("InternalResourceViewResolver method");
         InternalResourceViewResolver internalResourceViewResolver=new InternalResourceViewResolver();
-
         internalResourceViewResolver.setPrefix("/");
         internalResourceViewResolver.setSuffix(".jsp");
-
         return internalResourceViewResolver;
     }
 

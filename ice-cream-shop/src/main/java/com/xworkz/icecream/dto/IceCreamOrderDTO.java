@@ -1,6 +1,7 @@
 package com.xworkz.icecream.dto;
 
 import lombok.Data;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -21,4 +22,5 @@ public class IceCreamOrderDTO {
     private boolean takeAway;
     private boolean addOn;
     private String couponCode;
+    private MultipartFile multipartFile;
 }
