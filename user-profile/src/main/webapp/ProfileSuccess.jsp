@@ -39,8 +39,9 @@
     <p class="h4 text-success text-center my-4">
       Profile successfully submitted for ${name}!
     </p>
-    <img src="images/profile-success.png" alt="Success" class="d-block mx-auto mb-4"
-      style="width: 300px; height: 300px" />
+    <img src="download?profile=${fileName}" alt="profile-img">
+<!--    <img src="images/profile-success.png" alt="Success" class="d-block mx-auto mb-4"-->
+<!--      style="width: 300px; height: 300px" />-->
 
     <footer class="text-center text-lg-start py-3 fixed-bottom" style="background-color: rgb(59, 239, 89)">
       <div class="text-center text-dark">&copy; 2025 User Profile.</div>
