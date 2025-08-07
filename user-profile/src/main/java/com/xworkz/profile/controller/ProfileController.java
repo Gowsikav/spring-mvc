@@ -1,7 +1,9 @@
 package com.xworkz.profile.controller;
 
 import com.xworkz.profile.dto.ProfileDTO;
+import com.xworkz.profile.service.EmailSender;
 import org.apache.commons.io.IOUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -20,6 +22,9 @@ import java.nio.file.Paths;
 @Controller
 @RequestMapping("/")
 public class ProfileController {
+
+    @Autowired
+    private EmailSender emailSender;
 
     public ProfileController()
     {
@@ -57,6 +62,7 @@ public class ProfileController {
             model.addAttribute("message","invalid details");
             return "Profile";
         }
+        sendEmail(profileDTO);
 
         System.out.println("Profile submitted");
         model.addAttribute("name",profileDTO.getName());
@@ -78,5 +84,11 @@ public class ProfileController {
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    public void sendEmail(ProfileDTO profileDTO)
+    {
+        System.out.println("sendEmail method in controller");
+        emailSender.mailSend(profileDTO.getEmail(),"5676");
     }
 }
