@@ -34,6 +34,14 @@ public class IceCreamOrderServiceImpl implements IceCreamOrderService {
             System.out.println("Name is valid");
         }
 
+        String email = iceCreamOrderDTO.getEmail();
+        if (email == null || email.length() < 10 || email.length() > 50) {
+            System.out.println("Email is not valid");
+            return false;
+        } else {
+            System.out.println("Email is valid");
+        }
+
         String flavour = iceCreamOrderDTO.getFlavour();
         if (flavour == null) {
             System.out.println("Flavour is not valid");

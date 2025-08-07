@@ -1,6 +1,7 @@
 package com.xworkz.icecream.controller;
 
 import com.xworkz.icecream.dto.IceCreamOrderDTO;
+import com.xworkz.icecream.service.EmailSender;
 import com.xworkz.icecream.service.IceCreamOrderServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,6 +21,8 @@ public class IceCreamOrderController {
 
     @Autowired
     private IceCreamOrderServiceImpl iceCreamOrderService;
+    @Autowired
+    private EmailSender sender;
 
     public IceCreamOrderController() {
         System.out.println("IceCreamOrderController constructor");
@@ -52,6 +55,7 @@ public class IceCreamOrderController {
             model.addAttribute("name", iceCreamOrderDTO.getName());
             double price = iceCreamOrderService.getPrice(iceCreamOrderDTO.getFlavour(), iceCreamOrderDTO);
             model.addAttribute("price", price);
+            sendEmail(iceCreamOrderDTO,price);
             return "OrderSuccess";
         } else {
             System.out.println("Invalid Details");
@@ -60,5 +64,11 @@ public class IceCreamOrderController {
             return "Order";
         }
     }
+
+    public void sendEmail(IceCreamOrderDTO iceCreamOrderDTO,double price)
+     {
+         System.out.println("sendEmail method in controller");
+         sender.mailSend(iceCreamOrderDTO,price);
+     }
 
 }

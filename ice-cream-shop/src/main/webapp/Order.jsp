@@ -43,15 +43,15 @@
                 <h6 class="text-center text-danger mb-4">${message}</h6>
 
                 <div class="mb-3">
-                    <label for="profile" class="form-label">Profile</label>
-                    <input type="file" class="form-control" id="profile" name="multipartFile" required>
-
-                </div>
-                <div class="mb-3">
                     <label for="name" class="form-label">Name</label>
                     <input type="text" class="form-control" id="name" name="name" value="${dto.name}" required>
                     <span id="nameError" class="error small text-danger"></span>
+                </div>
 
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" value="${dto.email}" required>
+                    <span id="emailError" class="error small text-danger"></span>
                 </div>
 
                 <div class="mb-3">
@@ -104,6 +104,11 @@
                     </div>
                 </div>
 
+                <div class="mb-3">
+                    <label for="profile" class="form-label">Profile</label>
+                    <input type="file" class="form-control" id="profile" name="multipartFile">
+                </div>
+
                 <div class="text-center">
                     <button type="submit" class="btn btn-success">Order</button>
                 </div>
@@ -122,7 +127,7 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.min.js"
             integrity="sha384-7qAoOXltbVP82dhxHAUje59V5r2YsVfBafyUDxEdApLPmcdhBPg1DKg1ERo0BZlK"
             crossorigin="anonymous"></script>
-        <script src="js/order-validate.js?v=2"></script>
+        <script src="js/order-validate.js"></script>
     </body>
 
     </html>
