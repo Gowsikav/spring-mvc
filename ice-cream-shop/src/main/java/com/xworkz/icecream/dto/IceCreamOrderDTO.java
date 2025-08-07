@@ -3,6 +3,7 @@ package com.xworkz.icecream.dto;
 import lombok.Data;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.validation.constraints.Email;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.Size;
@@ -12,6 +13,9 @@ public class IceCreamOrderDTO {
 
     @Size(min = 3,max = 30)
     private String name;
+
+    @Email
+    private String email;
 
     @Size(min = 3,max = 30)
     private String flavour;

@@ -20,6 +20,19 @@ function validate() {
     hasError = true;
   }
 
+  const email = document.querySelector("#email").value.trim();
+    if (email === "") {
+      document.querySelector("#emailError").textContent = "email is required";
+      hasError = true;
+    } else if (email.length < 10 || email.length > 50) {
+      document.querySelector("#emailError").textContent =
+        "Email length should be above 10 and below 50";
+      hasError = true;
+    }else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+       document.querySelector("#emailError").textContent = "Invalid email format";
+       hasError = true;
+       }
+
   const flavour = document.querySelector("#flavour").value;
   if (flavour === "") {
     document.querySelector("#flavourError").textContent = "Flavour is required";

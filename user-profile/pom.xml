@@ -17,6 +17,8 @@
     <slf4j.version>2.0.17</slf4j.version>
     <commons.io.version>2.17.0</commons.io.version>
     <commons.fileupload.version>1.5</commons.fileupload.version>
+    <mail-starter.version>2.7.18</mail-starter.version>
+    <mail.version>1.6.2</mail.version>
   </properties>
 
   <dependencies>
@@ -64,6 +66,16 @@
       <groupId>commons-fileupload</groupId>
       <artifactId>commons-fileupload</artifactId>
       <version>${commons.fileupload.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-mail</artifactId>
+      <version>${mail-starter.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.sun.mail</groupId>
+      <artifactId>javax.mail</artifactId>
+      <version>${mail.version}</version>
     </dependency>
   </dependencies>
   <build>
