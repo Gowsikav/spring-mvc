@@ -1,6 +1,9 @@
 package com.xworkz.fastfood.service;
 
 import com.xworkz.fastfood.dto.FastFoodDTO;
+import com.xworkz.fastfood.entity.FastFoodEntity;
+
+import java.util.List;
 
 public interface FastFoodService {
 
@@ -10,4 +13,6 @@ public interface FastFoodService {
     FastFoodDTO updateFoodByName(String foodName, FastFoodDTO updatedDto);
 
     boolean deleteByFoodName(String foodName);
-}
+
+    boolean saveAllFoods(List<FastFoodEntity> foods);
+    }

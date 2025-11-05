@@ -1,12 +1,15 @@
 package com.xworkz.fastfood.restController;
 
 import com.xworkz.fastfood.dto.FastFoodDTO;
+import com.xworkz.fastfood.entity.FastFoodEntity;
 import com.xworkz.fastfood.service.FastFoodService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Slf4j
 @RestController
@@ -63,5 +66,15 @@ public class FastFoodRestController {
         if(fastFoodService.deleteByFoodName(foodName))
             return ResponseEntity.ok("Data Deleted");
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Data not Deleted");
+    }
+
+    @PostMapping("/batchInsert")
+    public ResponseEntity<String> saveAllFoods(@RequestBody List<FastFoodEntity> foods) {
+        String saved;
+        if(fastFoodService.saveAllFoods(foods))
+            saved="Batch insert done";
+        else saved="Batch insert failed";
+
+        return ResponseEntity.ok(saved);
     }
 }

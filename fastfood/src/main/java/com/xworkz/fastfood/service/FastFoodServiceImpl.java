@@ -7,6 +7,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Slf4j
 @Service
@@ -62,5 +65,12 @@ public class FastFoodServiceImpl implements FastFoodService{
             return true;
         }
         return false;
+    }
+
+    @Transactional
+    public boolean saveAllFoods(List<FastFoodEntity> foods) {
+        log.info("saveAllFoods method in fast food service");
+        List<FastFoodEntity> list=fastFoodRepository.saveAll(foods);
+        return !list.isEmpty();
     }
 }

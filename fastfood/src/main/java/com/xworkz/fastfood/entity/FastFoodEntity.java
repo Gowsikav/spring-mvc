@@ -13,7 +13,7 @@ import java.util.zip.CheckedOutputStream;
 public class FastFoodEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "food_id")
     private Integer foodId;
 
