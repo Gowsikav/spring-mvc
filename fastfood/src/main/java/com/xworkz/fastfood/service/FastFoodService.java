@@ -15,4 +15,10 @@ public interface FastFoodService {
     boolean deleteByFoodName(String foodName);
 
     boolean saveAllFoods(List<FastFoodEntity> foods);
-    }
+
+    int deleteFoods(List<Integer> ids);
+
+    int updatePriceForFoods(Float price, List<Integer> ids);
+
+    List<FastFoodEntity> getListByPrice(Float price);
+}

@@ -73,4 +73,18 @@ public class FastFoodServiceImpl implements FastFoodService{
         List<FastFoodEntity> list=fastFoodRepository.saveAll(foods);
         return !list.isEmpty();
     }
+
+    @Override
+    public int deleteFoods(List<Integer> ids) {
+        return fastFoodRepository.bulkDeleteByIds(ids);
+    }
+
+    public int updatePriceForFoods(Float price, List<Integer> ids) {
+        return fastFoodRepository.bulkUpdatePriceByIds(price, ids);
+    }
+
+    @Override
+    public List<FastFoodEntity> getListByPrice(Float price) {
+        return fastFoodRepository.getListByPrice(price);
+    }
 }

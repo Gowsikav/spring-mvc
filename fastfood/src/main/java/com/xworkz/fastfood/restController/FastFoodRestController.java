@@ -77,4 +77,22 @@ public class FastFoodRestController {
 
         return ResponseEntity.ok(saved);
     }
+
+    @DeleteMapping("/bulkDelete")
+    public ResponseEntity<String> deleteFoods(@RequestBody List<Integer> ids) {
+        int deleted = fastFoodService.deleteFoods(ids);
+        return ResponseEntity.ok(deleted + " records deleted successfully.");
+    }
+
+    @PutMapping("/bulkUpdatePrice")
+    public String updatePrice(@RequestParam Float price, @RequestBody List<Integer> ids) {
+        int updated = fastFoodService.updatePriceForFoods(price, ids);
+        return updated + " food items updated successfully.";
+    }
+
+    @GetMapping("/bulkListByPrice")
+    public List<FastFoodEntity> getListByPrice(@RequestParam Float price)
+    {
+        return fastFoodService.getListByPrice(price);
+    }
 }
